@@ -250,7 +250,7 @@ function ContactRow({ icon, label, children }: { icon: ReactNode; label: string;
   );
 }
 
-export function Contact({ defaultProduct }: { defaultProduct?: string }) {
+export function Contact({ defaultProduct }: { defaultProduct?: string | undefined }) {
   return (
     <section id="enquiry" className="mx-auto grid max-w-7xl gap-16 px-6 py-24 sm:py-32 lg:grid-cols-[0.8fr_1.2fr]">
       <div>

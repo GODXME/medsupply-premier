@@ -1,23 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { Layout } from "@/components/site/Layout";
+import { Hero, CategoryStrip, ProductGrid, About, WhyUs, Quality, Infrastructure, CtaBand, Contact } from "@/components/site/sections";
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ meta: [{ title: "Savenora Surgical — Medical Consumables Supplier" }, { name: "description", content: "Cotton wool, bandages, plaster, incontinence pants, masks, caps and gloves for hospitals and distributors." }, { property: "og:title", content: "Savenora Surgical — Medical Consumables Supplier" }, { property: "og:description", content: "Cotton wool, bandages, plaster, incontinence pants, masks, caps and gloves for hospitals and distributors." }] }),
+  component: () => (<Layout><Hero /><CategoryStrip /><ProductGrid limit={4} /><About /><WhyUs /><Quality /><Infrastructure /><CtaBand /><Contact /></Layout>),
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}

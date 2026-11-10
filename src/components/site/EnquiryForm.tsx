@@ -17,7 +17,7 @@ const schema = z.object({
 
 const field = "w-full rounded-xl border border-input bg-card px-4 py-3 text-sm outline-none transition focus:border-smoke-deep focus:ring-2 focus:ring-smoke/40";
 
-export function EnquiryForm({ defaultProduct }: { defaultProduct?: string }) {
+export function EnquiryForm({ defaultProduct }: { defaultProduct?: string | undefined }) {
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 

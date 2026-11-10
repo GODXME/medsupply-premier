@@ -56,7 +56,7 @@ export function EnquiryForm({ defaultProduct }: { defaultProduct?: string }) {
   return (
     <form onSubmit={onSubmit} className="grid gap-4 rounded-3xl border border-border bg-card p-6 shadow-soft sm:grid-cols-2 sm:p-8" noValidate>
       {F({name: "full_name", label: "Full Name", req: true })}
-      <F name="company" label="Company / Organization" req />
+      {F({ name: "company", label: "Company / Organization", req: true })}
       {F({name: "email", label: "Business Email", type: "email", req: true })}
       {F({name: "phone", label: "Contact Number", type: "tel", })}
       {F({name: "country", label: "Country", })}

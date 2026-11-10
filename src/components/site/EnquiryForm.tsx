@@ -45,6 +45,7 @@ export function EnquiryForm({ defaultProduct }: { defaultProduct?: string }) {
     );
 
   const F = ({ name, label, type = "text", req }: { name: string; label: string; type?: string; req?: boolean }) => (
+    // called as a function (not a component) so inputs keep their values across renders
     <label className="block">
       <span className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}{req && " *"}</span>
       <input name={name} type={type} className={field} required={req} />
@@ -54,11 +55,11 @@ export function EnquiryForm({ defaultProduct }: { defaultProduct?: string }) {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-4 rounded-3xl border border-border bg-card p-6 shadow-soft sm:grid-cols-2 sm:p-8" noValidate>
-      <F name="full_name" label="Full Name" req />
+      {F({name: "full_name", label: "Full Name", req: true })}
       <F name="company" label="Company / Organization" req />
-      <F name="email" label="Business Email" type="email" req />
-      <F name="phone" label="Contact Number" type="tel" />
-      <F name="country" label="Country" />
+      {F({name: "email", label: "Business Email", type: "email", req: true })}
+      {F({name: "phone", label: "Contact Number", type: "tel", })}
+      {F({name: "country", label: "Country", })}
       <label className="block">
         <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Product Selection</span>
         <select name="product" defaultValue={defaultProduct ?? ""} className={field}>
@@ -67,7 +68,7 @@ export function EnquiryForm({ defaultProduct }: { defaultProduct?: string }) {
           <option value="Multiple products">Multiple products</option>
         </select>
       </label>
-      <div className="sm:col-span-2"><F name="quantity" label="Required Quantity" /></div>
+      <div className="sm:col-span-2">{F({name: "quantity", label: "Required Quantity", })}</div>
       <label className="block sm:col-span-2">
         <span className="mb-1.5 block text-xs font-medium text-muted-foreground">Message</span>
         <textarea name="message" rows={4} className={field} maxLength={2000} />
